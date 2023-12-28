@@ -415,10 +415,10 @@ var email = document.getElementById("email").value;
 var crismadoSim = document.getElementById("crismado-sim").checked;
 var crismadoNao = document.getElementById("crismado-nao").checked;
 var catequizadoSim = document.getElementById("catequese-sim").checked;
-var catequizadoNao = document.getElementById("catequese-nao").checked;
 var catequizado, crismado;
 var cpf = document.getElementById("cpf-input").value;
 var cpfFormatado= cpf.replace(/\D/g, "");
+var celularFormatado = celular.replace(/\D/g, "");
 if (crismadoSim) {
     catequizado = "Sim";
     crismado = "Sim"; }
@@ -482,7 +482,7 @@ fetch(urlCadastro, {
                             Nome: nome, 
                             DataNascimento: dataNascimento, 
                             Idade: idade, 
-                            Celular: celular, 
+                            Celular: celularFormatado, 
                             NomePai: nomePai, 
                             NomeMae: nomeMae, 
                             Endereco: endereco, 
