@@ -435,7 +435,7 @@ var emailValido =  validarEmail(email);
 
 
 
-var urlCpf = 'https://script.google.com/macros/s/AKfycbyH-ANsGQ8Ri-XbVASu88WUdZbCZZQNxlGTdIv0mgCUszhiUiQk62eTZU5252Y2bXhOIA/exec?cpf='+cpfFormatado
+var urlCpf = 'https://script.google.com/macros/s/AKfycbxANxC9Be5SjX4K4PqvcMhm1PMkGG9zsk9mFkjz-awm8ve7q_mvHdvclJNUJh_35L8K/exec?cpf='+cpfFormatado
 
 fetch(urlCpf)
 .then(response => {
@@ -470,7 +470,7 @@ else if (emailValido == false) {
 }
 else {
 
-var urlCadastro = 'https://script.google.com/macros/s/AKfycbyH-ANsGQ8Ri-XbVASu88WUdZbCZZQNxlGTdIv0mgCUszhiUiQk62eTZU5252Y2bXhOIA/exec'; // Verifique e substitua pela URL correta
+var urlCadastro = 'https://script.google.com/macros/s/AKfycbxANxC9Be5SjX4K4PqvcMhm1PMkGG9zsk9mFkjz-awm8ve7q_mvHdvclJNUJh_35L8K/exec'; // Verifique e substitua pela URL correta
 
 fetch(urlCadastro, {
     method: 'POST',
