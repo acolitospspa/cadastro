@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/addons/cleave-phone.br.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.2.0/imask.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário de Cadastro</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Inscrição - Acólitos PSPA</h2>
+        <form action="#" method="post" id="cadastro-form">
+            <div class="form-group">
+               <label for="nome">Nome Completo:</label>
+				<input  class="percorrer"  class="percorrer" type="text"  id="nome" name="nome" required maxlength="50" minlength="10" tabindex="1">
+            </div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="dataNascimento">Data de Nascimento:</label>
+						<input class="percorrer" type="date" id="dataNascimento" name="dataNascimento" required tabindex="2">
+						<div id="date-error" class="error-message" style="display: none;">
+							A data de nascimento não pode ser maior que a data atual.
+						</div>
+						<div id="date-warning" class="error-message" style="display: none;">
+							A data de nascimento não pode ser anterior a 1900.
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="idade">Idade:</label>
+						<input class="não-percorrer" type="inactive" id="idade" name="idade" required readonly disabled>
+					</div>
+				</div>
+			</div>
+			
+			   <div class="form-group">
+				  <label for="cpf">CPF:</label>
+				  <input  class=" cpf-input percorrer" type="text" id="cpf-input" name="cpf" required tabindex="3">
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="celular">Celular:</label>
+							<input class="phone-input percorrer" type="tel" id="celular" name="celular" required tabindex="4">
+						</div>
+					</div>
+				
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="email">E-mail:</label>
+							<input class="percorrer" type="email" id="email" name="email" required maxlength="50" tabindex="5">
+							<div id="email-error" class="error-message" style="display: none">
+								Email inválido!
+							</div>
+						</div>
+					</div>
+				</div>
+
+				   <div class="form-group">
+						<label for="nomePai">Nome do Pai:</label>
+						<input  class="percorrer" type="text" id="nomePai" name="nomePai" required maxlength="50" minlength="10" tabindex="6">
+					</div>
+
+					<div class="form-group">
+						<label for="nomeMae">Nome da Mãe:</label>
+						<input  class="percorrer" type="text" id="nomeMae" name="nomeMae" required maxlength="50" minlength="10" tabindex="7">
+					</div>
+					<div class="form-group">
+				<label for="endereco">Endereço:</label>
+				<input  class="percorrer" type="text" id="endereco" name="endereco" required maxlength="200" minlength="10" tabindex="8">
+			</div>
+
+            <div class="form-group">
+                <label for="capela">Qual capela ou comunidade pertence? (Opcional)</label>
+                <input  class="percorrer" type="text" id="capela" name="capela" maxlength="50" minlength="10" tabindex="9"> 
+            </div>
+            <div class="form-group">
+                <label>É crismado?</label>
+				<br></br>
+                <div class="radio-group">
+                    <label for="crismado-sim">Sim</label>
+                    <input  class="percorrer" type="radio" id="crismado-sim" name="crismado" value="Sim" tabindex="10">
+                    <label for="crismado-nao">Não</label>
+                    <input  class="percorrer" type="radio" id="crismado-nao" name="crismado" value="Não" tabindex="11">
+                </div>
+            </div>
+            <div class="form-group" id="catequese-group" style="display: none;">
+                <label>Está na última fase da Catequese?</label>
+				<br></br>
+                <div class="radio-group">
+                    <label for="catequese-sim">Sim</label>
+                    <input  class="percorrer" type="radio" id="catequese-sim" name="catequese" value="Sim" tabindex="12">
+                    <label for="catequese-nao">Não</label>
+                    <input  class="percorrer" type="radio" id="catequese-nao" name="catequese" value="Não" tabindex="13">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="submit-button percorrer" id="submit-button" type="submit" tabindex="14">Concluir</button>
+            </div>
+			
+			<!-- overlay para bloquear os elementos atrás da camada principal -->
+			  <div id="overlay"></div>
+
+		
+				<!-- Caixa de mensagem para idade mínima -->
+		<div class="caixa-mensagem" id="mensagemIdade">
+			<p>Idade mínima: 14 anos!</p><br></br>
+			<button class="botao-ok" id="ok-mensagem-idade" onclick="fechaJanelaIdade()" type="button">OK</button>
+		</div>
+
+			<!-- Caixa de mensagem para catequese -->
+			<div class="caixa-mensagem" id="caixa-mensagem-cat">
+				<p>É necessário ser Crismado ou estar na última etapa da catequese!</p>
+				<button class="botao-ok" id="ok-mensagem-cat" onclick="fecharJanelaCat()" type="button">OK</button>
+			</div>
+
+			<!-- Caixa de mensagem para campos obrigatórios nulos -->
+			<div class="caixa-mensagem" id="caixa-mensagem-null">
+				<p>Preencha os campos obrigatórios!</p>
+				<button class="botao-ok" id="ok-mensagem-null" onclick="fecharJanelaNull()" type="button">OK</button>
+			</div>
+			<!-- Caixa de mensagem para cpf -->
+			<div class="caixa-mensagem" id="caixaMensagemCpf">
+			   <p>Esse CPF já foi usado em outro cadastro!</p><br></br>
+			   <button class="botao-ok" id="ok-mensagem-cpf" onclick="fechaJanelaCpf()" type="button">OK</button>
+			</div>
+			<!-- Caixa de mensagem para sucesso -->
+			<div class="caixa-mensagem" id="sucesso">
+				<i class="fas fa-check-circle" style="color: green;"></i>
+				<p style="display: inline;">Cadastrado com sucesso!</p><br></br>
+			<button class="botao-ok" id="ok-mensagem-sucesso" onclick="fechaJanelaSucesso()" type="button">OK</button>
+			</div>
+			<!-- Carregamento-->
+				<div class="sk-chase" id="loading">
+				  <div class="sk-chase-dot"></div>
+				  <div class="sk-chase-dot"></div>
+				  <div class="sk-chase-dot"></div>
+				  <div class="sk-chase-dot"></div>
+				  <div class="sk-chase-dot"></div>
+				  <div class="sk-chase-dot"></div>
+				</div>
+
+        </form>
+    </div>
+
+    <script src="main.js"> </script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
