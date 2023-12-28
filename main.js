@@ -415,10 +415,10 @@ var email = document.getElementById("email").value;
 var crismadoSim = document.getElementById("crismado-sim").checked;
 var crismadoNao = document.getElementById("crismado-nao").checked;
 var catequizadoSim = document.getElementById("catequese-sim").checked;
-var catequizadoNao = document.getElementById("catequese-nao").checked;
 var catequizado, crismado;
 var cpf = document.getElementById("cpf-input").value;
 var cpfFormatado= cpf.replace(/\D/g, "");
+var celularFormatado = celular.replace(/\D/g, "");
 if (crismadoSim) {
     catequizado = "Sim";
     crismado = "Sim"; }
@@ -435,7 +435,7 @@ var emailValido =  validarEmail(email);
 
 
 
-var urlCpf = 'https://script.google.com/macros/s/AKfycbyH-ANsGQ8Ri-XbVASu88WUdZbCZZQNxlGTdIv0mgCUszhiUiQk62eTZU5252Y2bXhOIA/exec?cpf='+cpfFormatado
+var urlCpf = 'https://script.google.com/macros/s/AKfycbxANxC9Be5SjX4K4PqvcMhm1PMkGG9zsk9mFkjz-awm8ve7q_mvHdvclJNUJh_35L8K/exec?cpf='+cpfFormatado
 
 fetch(urlCpf)
 .then(response => {
@@ -470,7 +470,7 @@ else if (emailValido == false) {
 }
 else {
 
-var urlCadastro = 'https://script.google.com/macros/s/AKfycbyH-ANsGQ8Ri-XbVASu88WUdZbCZZQNxlGTdIv0mgCUszhiUiQk62eTZU5252Y2bXhOIA/exec'; // Verifique e substitua pela URL correta
+var urlCadastro = 'https://script.google.com/macros/s/AKfycbxANxC9Be5SjX4K4PqvcMhm1PMkGG9zsk9mFkjz-awm8ve7q_mvHdvclJNUJh_35L8K/exec'; // Verifique e substitua pela URL correta
 
 fetch(urlCadastro, {
     method: 'POST',
@@ -478,7 +478,21 @@ fetch(urlCadastro, {
     headers: {
         'Content-Type': 'application/json'
     },
-   body: JSON.stringify({ Nome: nome, DataNascimento: dataNascimento, Idade: idade, Celular: celular, NomePai: nomePai, NomeMae: nomeMae, Endereco: endereco, Capela: capela, Catequizado: catequizado, Crismado: crismado, Cpf: cpfFormatado, Emailpessoal: email})
+   body: JSON.stringify({ 
+                            Nome: nome, 
+                            DataNascimento: dataNascimento, 
+                            Idade: idade, 
+                            Celular: celularFormatado, 
+                            NomePai: nomePai, 
+                            NomeMae: nomeMae, 
+                            Endereco: endereco, 
+                            Capela: capela, 
+                            Catequizado: catequizado, 
+                            Crismado: crismado,
+                            Cpf: cpfFormatado,
+                            Emailpessoal: email,
+                            Funcexecutar: "cadastroCandidato"
+                        })
 
 });
 
