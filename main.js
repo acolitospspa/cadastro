@@ -478,7 +478,21 @@ fetch(urlCadastro, {
     headers: {
         'Content-Type': 'application/json'
     },
-   body: JSON.stringify({ Nome: nome, DataNascimento: dataNascimento, Idade: idade, Celular: celular, NomePai: nomePai, NomeMae: nomeMae, Endereco: endereco, Capela: capela, Catequizado: catequizado, Crismado: crismado, Cpf: cpfFormatado, Emailpessoal: email})
+   body: JSON.stringify({ 
+                            Nome: nome, 
+                            DataNascimento: dataNascimento, 
+                            Idade: idade, 
+                            Celular: celular, 
+                            NomePai: nomePai, 
+                            NomeMae: nomeMae, 
+                            Endereco: endereco, 
+                            Capela: capela, 
+                            Catequizado: catequizado, 
+                            Crismado: crismado,
+                            Cpf: cpfFormatado,
+                            Emailpessoal: email,
+                            Funcexecutar: "cadastroCandidato"
+                        })
 
 });
 
